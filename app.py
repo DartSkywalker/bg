@@ -28,4 +28,5 @@ def remove_background():
     return send_file(output_image_path)
 
 
-app.run()
+if __name__ == "__main__":
+    app.run()
