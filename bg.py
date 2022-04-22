@@ -32,7 +32,7 @@ class RemoveBackground:
         return img_rel_name
 
     @staticmethod
-    def remove_bg(image_path):
+    def remove_bg(image_path, alpha_matting):
         """
         Remove background from the provided image
 
@@ -45,8 +45,11 @@ class RemoveBackground:
             processed_image_name = f"processed/nobg_{image_path.split('/')[-1]}.png"
 
             with open(processed_image_name, 'wb') as o:
-                input = i.read()
-                output = remove(input)
+                input_im = i.read()
+                if alpha_matting == 'true':
+                    output = remove(input_im, alpha_matting=True)
+                else:
+                    output = remove(input_im)
                 o.write(output)
 
         return processed_image_name

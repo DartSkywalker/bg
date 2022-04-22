@@ -16,12 +16,13 @@ def remove_background():
 
     data = request.json
     link = data['image_link']
+    alpha_matting = data['alpha_matting']
 
     process = RemoveBackground(link)
 
     try:
         input_image_path = process.download_image()
-        output_image_path = process.remove_bg(input_image_path)
+        output_image_path = process.remove_bg(input_image_path, alpha_matting)
     except Exception as e:
         return f"Cannot process the image: \n{e}", 501
 
