@@ -42,7 +42,7 @@ class RemoveBackground:
         """
 
         with open(image_path, 'rb') as i:
-            processed_image_name = f"processed/nobg_{image_path.split('/')[-1]}"
+            processed_image_name = f"processed/nobg_{image_path.split('/')[-1]}.png"
 
             with open(processed_image_name, 'wb') as o:
                 input = i.read()
